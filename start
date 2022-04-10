@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+# This script starts the bot in background and save it's PID
+
+# Make sure logs folder exists
+mkdir -p logs
+
+nohup python3 -u main.py &>> logs/activity.log &
+echo $(($$+2)) > ps.pid

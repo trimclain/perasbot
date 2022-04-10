@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+# This script stops the bot using it's PID saved with ./start
+
+kill $(cat ps.pid)
+rm ps.pid
