@@ -1,14 +1,17 @@
 import requests
 from bs4 import BeautifulSoup
 
-
+headers = {
+    'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5)\
+                    AppleWebKit/537.36 (KHTML, like Gecko) Cafari/537.36'
+}
 URL = "https://coinmarketcap.com/currencies/"
 
 
 def getCrypto(name):
     """Get The Price"""
     url = URL + name + '/'
-    data = requests.get(url)
+    data = requests.get(url, headers=headers)
     if data.status_code == 200:
         soup = BeautifulSoup(data.content, features='html.parser')
 
