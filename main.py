@@ -13,6 +13,7 @@ from telegram.ext import (
 )
 
 from scripts.scraper import getCrypto
+from scripts.parser import getData
 
 with open('.token', 'r') as f:
     TOKEN = f.read()[:-1]  # last character is whitespace
@@ -51,6 +52,12 @@ def crypto(update: Update, _: CallbackContext) -> None:
     update.message.reply_text(text)
 
 
+def motivate(update: Update, _: CallbackContext) -> None:
+    """Send a motivation message when the command /motivate is issued."""
+    text = getData()
+    update.message.reply_text(text)
+
+
 def main():
     """Start the bot."""
 
@@ -65,6 +72,7 @@ def main():
     # dispatcher.add_handler(CommandHandler("help", help_command))
 
     dispatcher.add_handler(CommandHandler('crypto', crypto))
+    dispatcher.add_handler(CommandHandler('motivate', motivate))
 
     # On noncommand i.e message - echo the message on Telegram
     # For multiple handlers need to change the group each time
