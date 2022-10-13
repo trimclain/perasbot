@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 
-# This script stops the bot using it's PID saved with ./start
-
-kill $(cat ps.pid)
-rm ps.pid
+if [[ -f ps.pid ]]; then
+    kill $(cat ps.pid)
+    rm ps.pid
+    echo "PerasBot stopped successfully"
+else
+    echo "Nothing to stop"
+fi

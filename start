@@ -1,9 +1,14 @@
 #!/usr/bin/env bash
 
-# This script starts the bot in background and save it's PID
+# This script starts the bot in background and saves it's PID
 
 # Make sure logs folder exists
 mkdir -p logs
 
-nohup python3 -u $(pwd)/main.py &>> logs/activity.log &
-echo $(($$+2)) > ps.pid
+if [[ ! -f ps.pid ]]; then
+    nohup ./venv/bin/python3 -u $(pwd)/main.py &>> logs/activity.log &
+    echo $(($$+2)) > ps.pid
+    echo "Started successfully"
+else
+    echo "The process already exists"
+fi
