@@ -7,7 +7,7 @@ all:
 help:
 	@echo "Run 'make' install missing packages"
 	@echo "Run 'make venv' to create the venv"
-	@echo "Run 'make install' after sourcing the venv" \
+	@echo "Run 'make install_reqs' after sourcing the venv" \
 			"to install modules from requirements.txt"
 
 venv:
